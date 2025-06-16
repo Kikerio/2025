@@ -1,98 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="UTF-8"/>
-	<meta name="author" content="Nome Cognome" />
-	<title>img</title>
-	<style type="text/css">
-		html{
-			height:100%;
-		}
-		body{
-			background-color: rgb(235,235,235);
-			margin: 3em 2em;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <title>Casio Clock</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
 
+    .casio-clock {
+      background-color: black;
+      color: white;
+      font-family: 'IBM Plex Mono', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid #222;
+      padding: 10px;
+      border-radius: 8px;
+      width: 140px;
+      height: 140px;
+      box-shadow: 0 0 10px #000;
+    }
+
+    .hours, .minutes {
+      font-size: 48px;
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+
+    .minutes {
+      margin-top: 5px;
+    }
+  </style>
 </head>
 <body>
+  <div class="casio-clock">
+    <div class="hours" id="hours">--</div>
+    <div class="minutes" id="minutes">--</div>
+  </div>
 
-	<img />
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
 
-	<script type="module">
+      document.getElementById('hours').textContent = hours;
+      document.getElementById('minutes').textContent = minutes;
+    }
 
-		const sequenza = [
-			"img/0000.png",
-			"img/0001.png",
-			"img/0002.png",
-			"img/0003.png",
-			"img/0004.png",
-			"img/0005.png",
-			"img/0006.png",
-			"img/0007.png",
-			"img/0008.png",
-			"img/0009.png",
-			"img/0010.png",
-			"img/0011.png",
-			"img/0012.png",
-			"img/0013.png",
-			"img/0014.png",
-			"img/0015.png",
-			"img/0016.png",
-			"img/0017.png",
-			"img/0018.png",
-			"img/0019.png",
-			"img/0020.png",
-			"img/0021.png",
-			"img/0022.png",
-			"img/0023.png",
-			"img/0024.png",
-			"img/0025.png",
-			"img/0026.png",
-			"img/0027.png",
-			"img/0028.png",
-			"img/0029.png",
-			// ----------------------
-			"img/0029.png",
-			"img/0028.png",
-			"img/0027.png",
-			"img/0026.png",
-			"img/0025.png",
-			"img/0024.png",
-			"img/0023.png",
-			"img/0022.png",
-			"img/0021.png",
-			"img/0020.png",
-			"img/0019.png",
-			"img/0018.png",
-			"img/0017.png",
-			"img/0016.png",
-			"img/0015.png",
-			"img/0014.png",
-			"img/0013.png",
-			"img/0012.png",
-			"img/0011.png",
-			"img/0010.png",
-			"img/0009.png",
-			"img/0008.png",
-			"img/0007.png",
-			"img/0006.png",
-			"img/0005.png",
-			"img/0004.png",
-			"img/0003.png",
-			"img/0002.png",
-			"img/0001.png",
-			"img/0000.png",
-		]
-
-		let frame = 0
-
-		setInterval(() => {
-			const img = document.querySelector("img")
-			img.src = sequenza[frame]
-			frame = (frame + 1) % sequenza.length
-		}, 20)
-
-	</script>
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
 </body>
 </html>
